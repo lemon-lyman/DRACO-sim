@@ -60,11 +60,9 @@ for kk=1:N-1
   statek.RBI(:) = Xk(7:15);
   statek.vI = Xk(4:6);
   statek.omegaB = Xk(16:18);
-  Stc.statek = statek;
-  Sac.statek = statek;
   tspan = [R.tVec(kk):dtOut:R.tVec(kk+1)]';
   [tVeck,XMatk] = ...
-      ode45(@(t,X) quadOdeFunctionHF(t, X, thrusterVec, P), tspan, Xk);
+      ode45(@(t,X) OdeFunction(t, X, thrusterVec, P), tspan, Xk);
   if(length(tspan) == 2)
     % Deal with S.oversampFact = 1 case 
     tVec = [tVec; tVeck(1)];
