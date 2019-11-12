@@ -56,13 +56,16 @@ statek.RBI = zeros(3,3);
 XMat = []; tVec = [];
 
 for kk=1:N-1
+    
   statek.rI = Xk(1:3);
   statek.RBI(:) = Xk(7:15);
   statek.vI = Xk(4:6);
   statek.omegaB = Xk(16:18);
-  tspan = [R.tVec(kk):dtOut:R.tVec(kk+1)]';
+  tspan = [S.tVec(kk):dtOut:S.tVec(kk+1)]';
+  
   [tVeck,XMatk] = ...
       ode45(@(t,X) OdeFunction(t, X, thrusterVec, P), tspan, Xk);
+  
   if(length(tspan) == 2)
     % Deal with S.oversampFact = 1 case 
     tVec = [tVec; tVeck(1)];
@@ -72,13 +75,16 @@ for kk=1:N-1
     XMat = [XMat; XMatk(1:end-1,:)];
   end
   Xk = XMatk(end,:)';
+  
   % Ensure that RBI remains orthogonal
   if(mod(kk,100) == 0)
       RBIk(:) = Xk(7:15);
       [UR,~,VR]=svd(RBIk);
       RBIk = UR*VR'; Xk(7:15) = RBIk(:);
   end
+  
 end
+
 XMat = [XMat;XMatk(end,:)];
 tVec = [tVec;tVeck(end,:)];
 

@@ -22,15 +22,15 @@ P.debrisParams = debrisParams;
 %% S - state
 S.tVec = tVec;
 
-S.state0.rI = [0 0 0]';
-S.state0.vI = [0 0 0]';
-S.state0.e = [0 0 pi/2]';
-S.state0.omegaB = [0 0 0]';
+S.state0.rI = 
+S.state0.vI =
+S.state0.RBI =
+S.state0.omegaB =
 
-S.state0.rI_debris = [0 -10 0]';
-S.state0.vI_debris = [0 0 0]';
-S.state0.e_debris = [0 0 pi/2]';
-S.state0.omegaB_debris = [0 0 0]';
+S.state0.rI_debris =
+S.state0.vI_debris =
+S.state0.RBI_debris =
+S.state0.omegaB_debris =
 
 S.thrusterMat = ; % Feed-forward thrusterVecs
 S.oversampFact = 2;
