@@ -20,15 +20,33 @@ DRACOParams.adcs_orientation = [0 1 0;
                                 sind(60) -0.5 0;
                                 -sind(60) -0.5 0];
 
-DRACOParams.adcs_position = [1 0 0;
-                             1 0 0;
-                             1 0 0;
+% Position of adcs thrusters in B
+DRACOParams.adcs_position = [0 1 0;
+                             0 1 0;
+                             0 1 0;
                              0 0 1;
                              0 0 1;
                              0 0 1;
-                             -1 0 0;
-                             -1 0 0;
-                             -1 0 0;
+                             0 -1 0;
+                             0 -1 0;
+                             0 -1 0;
                              0 0 -1;
                              0 0 -1;
                              0 0 -1];
+
+% Simplifying the trig,
+minor_projection = sind(30);
+major_projection = cosd(30);
+% Orientation of adcs thrusters in B
+DRACOParams.adcs_orientation = [1 0 0;
+                                -minor_projection 0 -major_projection;
+                                -minor_projection 0 major_projection;
+                                1 0 0;
+                                -minor_projection major_projection 0;
+                                -minor_projection -major_projection 0;
+                                1 0 0;
+                                -minor_projection 0 major_projection;
+                                -minor_projection 0 -major_projection;
+                                1 0 0;
+                                -minor_projection -major_projection 0;
+                                -minor_projection major_projection 0];
