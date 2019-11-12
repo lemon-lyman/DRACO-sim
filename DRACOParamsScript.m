@@ -1,0 +1,34 @@
+DRACOParams.m = 1000;
+DRACOParams.dimensions = [2 3 2];
+w = DRACOParams.dimensions(1);
+l = DRACOParams.dimensions(2);
+h = DRACOParams.dimensions(3);
+DRACOParams.Jq = (DRACOParams.m / 12) * [(l^2 + h^2), 0, 0;
+                                         0, (w^2 + h^2), 0;
+                                         0, 0, (l^2 + w^2)];
+
+DRACOParams.adcs_orientation = [0 1 0;
+                                0 -0.5 sind(60);
+                                0 -0.5 -sind(60);
+                                0 1 0;
+                                -sind(60) -0.5 0;
+                                sind(60) -0.5 0;
+                                0 1 0;
+                                0 -0.5 -sind(60);
+                                0 -0.5 sind(60);
+                                0 1 0;
+                                sind(60) -0.5 0;
+                                -sind(60) -0.5 0];
+
+DRACOParams.adcs_position = [1 0 0;
+                             1 0 0;
+                             1 0 0;
+                             0 0 1;
+                             0 0 1;
+                             0 0 1;
+                             -1 0 0;
+                             -1 0 0;
+                             -1 0 0;
+                             0 0 -1;
+                             0 0 -1;
+                             0 0 -1];
